@@ -1,0 +1,39 @@
+[Profile]
+
+# 対局者名（アカウント名）
+# Only A-Z a-z 0-9
+# Names may be at most 10 characters long
+Name = 'kifuwara_w'
+
+Pass = '' # your password (any)
+
+[Engine]
+
+# Komi - コミ☆（＾～＾）
+Komi = 6.5
+
+# BoardSize - 何路盤。
+BoardSize = 9
+
+# MaxMoves - 最大手数。
+MaxMoves = 1000
+
+# BoardData - 盤
+# '.' - 空点
+# 'x' - 黒石
+# 'o' - 白石
+# '+' - 枠
+# ' ' - 半角空白は無視します
+BoardData = '''
+	+ + + + + + + + + + +
+	+ . . . . . o . . . +
+	+ . . . . o x o o o +
+	+ . . . . o x x x x +
+	+ . . . . . o x o o +
+	+ . . . . . . . . . +
+	+ . x o . . . . . . +
+	+ x o . o . . . . . +
+	+ . x o . o o x x . +
+	+ . . . . o x . o x +
+	+ + + + + + + + + + +
+'''
