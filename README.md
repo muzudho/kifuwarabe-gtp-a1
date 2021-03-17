@@ -10,7 +10,7 @@ Base: [https://github.com/bleu48/GoGo](https://github.com/bleu48/GoGo)
 
 TODO 以下を実装  
 
-1. この作問エンジン（以降 `作問エンジンa1` と呼称）は、自身が考える前に　局面（ポジション）などを `quest-1.toml` ファイルとして `shared/qフォルダー` へ書き出す
+1. この作問エンジン（以降 `作問エンジンa1` と呼称）は、自身が考える前に　局面（ポジション）などを `quest-1.toml` （問題ファイル）として `shared/qフォルダー` へ書き出す
    * `quest-1.toml` は、 `quest-2.toml`, `quest-3.toml` のように複数あるものとする
 
 quest-1.toml:  

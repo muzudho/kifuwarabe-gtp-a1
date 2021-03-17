@@ -34,7 +34,7 @@ c:\go
 ## Modules を使ったプロジェクトの作成
 
 ```shell
-go mod init github.com/muzudho/kifuwarabe-gtp
+go mod init github.com/muzudho/kifuwarabe-gtp-a1
 ```
 
 ## Gore

@@ -14,12 +14,13 @@ import (
 	"time"
 
 	l "github.com/muzudho/go-logger"
-	e "github.com/muzudho/kifuwarabe-gtp/entities"
-	g "github.com/muzudho/kifuwarabe-gtp/global"
-	"github.com/muzudho/kifuwarabe-gtp/presenter"
-	p "github.com/muzudho/kifuwarabe-gtp/presenter"
-	"github.com/muzudho/kifuwarabe-gtp/ui"
-	u "github.com/muzudho/kifuwarabe-gtp/usecases"
+	be "github.com/muzudho/kifuwarabe-go-base/entities"
+	e "github.com/muzudho/kifuwarabe-gtp-a1/entities"
+	g "github.com/muzudho/kifuwarabe-gtp-a1/global"
+	"github.com/muzudho/kifuwarabe-gtp-a1/presenter"
+	p "github.com/muzudho/kifuwarabe-gtp-a1/presenter"
+	"github.com/muzudho/kifuwarabe-gtp-a1/ui"
+	u "github.com/muzudho/kifuwarabe-gtp-a1/usecases"
 )
 
 func main() {
@@ -103,7 +104,7 @@ func main() {
 
 	rand.Seed(time.Now().UnixNano())
 
-	position := e.NewPosition(config.GetBoardArray(), config.BoardSize(), config.SentinelBoardMax(), config.Komi(), config.MaxMoves())
+	position := be.NewPosition(config.GetBoardArray(), config.BoardSize(), config.SentinelBoardMax(), config.Komi(), config.MaxMoves())
 	g.G.Log.Trace("...Engine position.BoardSize()=%d\n", position.BoardSize())
 	g.G.Log.Trace("...Engine position.SentinelBoardMax()=%d\n", position.SentinelBoardMax())
 	e.UctChildrenSize = config.BoardSize()*config.BoardSize() + 1
@@ -125,7 +126,7 @@ MainLoop:
 			g.G.Log.Notice("<--%s ok\n", config.Profile.Name)
 			g.G.Chat.Print("= \n\n")
 		case "clear_board":
-			position = e.NewPosition(config.GetBoardArray(), config.BoardSize(), config.SentinelBoardMax(), config.Komi(), config.MaxMoves())
+			position = be.NewPosition(config.GetBoardArray(), config.BoardSize(), config.SentinelBoardMax(), config.Komi(), config.MaxMoves())
 			g.G.Log.Notice("<--%s ok\n", config.Profile.Name)
 			g.G.Chat.Print("= \n\n")
 		case "quit":
@@ -159,6 +160,10 @@ MainLoop:
 			if 1 < len(tokens) && strings.ToLower(tokens[1]) == "w" {
 				color = 2
 			}
+
+			// TODO 問題ファイル生成
+			ui.SaveQuest("")
+
 			tIdx := u.PlayComputerMove(position, color, 1, presenter.PrintBoard)
 			presenter.PrintBoardHeader(position, position.MovesNum)
 			presenter.PrintBoard(position)
@@ -192,7 +197,7 @@ MainLoop:
 					tIdx = 0
 					// g.G.Log.Trace("...Engine pass\n")
 				} else {
-					x, y, err := e.GetXYFromName(tokens[2])
+					x, y, err := be.GetXYFromName(tokens[2])
 					if err != nil {
 						panic(g.G.Log.Fatal(fmt.Sprintf("...Engine... %s", err)))
 					}
