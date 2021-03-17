@@ -160,12 +160,19 @@ MainLoop:
 				color = 2
 			}
 
-			// TODO 問題ファイル生成
+			// TODO 問題ファイル生成（いくつか）
 			ui.SaveQuest("")
 
-			tIdx := u.PlayComputerMove(position, color, 1, p.CreateBoardString)
+			// TODO 問題ファイルを１つ選ぶ
+
+			// TODO position 変更
+			tIdx := u.PlayComputerMove(position, color, p.CreateBoardString)
 			g.G.StderrChat.Info(p.CreateBoardHeader(position, position.MovesNum))
 			g.G.StderrChat.Info(p.CreateBoardString(position))
+
+			// TODO position 復元
+
+			// TODO 回答ファイル作成
 
 			bestmoveString := p.GetPointName(position, tIdx)
 
